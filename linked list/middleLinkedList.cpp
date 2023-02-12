@@ -14,23 +14,25 @@ public:
     }
 };
 
-node *reverse_ll(node *head)
+node* middleLinkedList(node* head)
 {
-    node *prev = NULL;
-    node *curr = head;
-    node *next = NULL;
-
-    while (curr != NULL)
+    int size = 0;
+    node* temp = head;
+    while (head != NULL)
     {
-        next = curr->next;
-        curr->next = prev;
-
-        prev = curr;
-        curr = next;
-        // prev = prev->next;
+        head = head->next;
+        size++;
     }
-    return prev;
+    for (int i = 0; i < size / 2; i++)
+    {
+        temp = temp->next;
+    }
+
+    return temp;
+    
 }
+
+
 
 node *take_inp()
 {
@@ -75,10 +77,9 @@ int main()
     node *head = take_inp();
     print(head);
 
-    cout << "After reversing, ";
-
-    node *head2 = reverse_ll(head);
-    print(head2);
+    
+    cout << "The middle node is : " << middleLinkedList(head)->data << endl;
+   
 
     return 0;
 }
